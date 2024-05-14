@@ -1,9 +1,10 @@
-package org.example.data;
+package bankProducts;
 
-public class CurrencyCard extends BankProduct implements CardMethods {
+import interfaces.IWriteOff;
 
-    @Override
-    public void writeOffs() {
-        //списание средств
+public class CurrencyCard extends Card {
+
+    public CurrencyCard(String cardName, double balance, String currency) {
+        super(cardName, balance, currency);
     }
 }

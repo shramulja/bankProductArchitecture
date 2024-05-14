@@ -1,7 +1,9 @@
 package interfaces;
 
-public interface CardMethods {
+import bankProducts.DebitCard;
 
-    public void writeOffs();
+public interface IWriteOff {
     //списание средств
+    public void writeOff(double value);
 }
+

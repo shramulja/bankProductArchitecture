@@ -1,38 +1,60 @@
-import bankProducts.CreditCard;
+import bankProducts.DebitCard;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class CreditCardTests {
+public class DebitCardTests {
 
-    CreditCard creditCard;
+    DebitCard debitCard;
 
     @BeforeEach
     public void beforeEach() {
-        creditCard = new CreditCard("Maestro", "EUR", 1000.0, 5.5);
+        debitCard = new DebitCard("Belkart", 2000.0, "BYN");
+    }
+
+    @Test()
+    public void checkCardNameDebitCard() {
+        String cardName = "Belkart";
+        String actualCardName = debitCard.getProductName();
+        assertEquals(cardName, actualCardName, "Expected card name " + cardName +
+                " not Equals with actual card name " + actualCardName);
     }
 
     @Test
-    public void checkDebtRequestCreditCard() {
-        double debtRequest = 100;
-        double actualDebtRequest = creditCard.debtRequest();
-        assertEquals(debtRequest, actualDebtRequest, "Expected debt request " + debtRequest +
-                " not Equals actual debtRequest " + actualDebtRequest);
+    public void checkBalanceDebitCard() {
+        double balance = 2000.0;
+        double actualBalance = debitCard.getBalance();
+        assertEquals(balance, actualBalance, "Expected balance " + balance +
+                " not Equals with actual balance " + actualBalance);
     }
 
     @Test
-    public void checkInterestRateCreditCard() {
-        double interestRate = 5.5;
-        double actualInterestRate = creditCard.getInterestRate();
-        assertEquals(interestRate, actualInterestRate, "Expected interest rate " + interestRate +
-                " not Equals with actual interest rate " + actualInterestRate);
+    public void checkWriteOffDebitCard() {
+        double value = 500.0;
+        debitCard.writeOff(value);
+
+        double balance = 2000.0 - value;
+        double actualBalance = debitCard.getBalance();
+        assertEquals(balance, actualBalance, "Expected balance " + balance +
+                " not Equals with actual balance " + actualBalance);
     }
 
     @Test
-    public void checkCreditCardBalance() {
-        double balance = 1000.0;
-        double actualBalance = creditCard.getBalance();
+    public void checkAddDebitCard() {
+        double value = 500.0;
+        debitCard.addToBalance(value);
+
+        double balance = 2000.0 + value;
+        double actualBalance = debitCard.getBalance();
+        assertEquals(balance, actualBalance, "Expected balance " + balance +
+                " not Equals with actual balance " + actualBalance);
+    }
+
+    @Test
+    public void checkGetBankProductBalanceDebitCard() {
+        double balance = 2000.0;
+        double actualBalance = debitCard.getBankProductBalance();
         assertEquals(balance, actualBalance, "Expected balance " + balance +
                 " not Equals with actual balance " + actualBalance);
     }

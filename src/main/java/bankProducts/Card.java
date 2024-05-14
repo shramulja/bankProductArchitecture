@@ -4,24 +4,24 @@ import interfaces.IAddBalance;
 import interfaces.IGetBalance;
 import interfaces.IWriteOff;
 
-public class DebitCard extends BankProduct implements IWriteOff, IAddBalance, IGetBalance {
+public class Card extends BankProduct implements IWriteOff, IAddBalance, IGetBalance {
 
-    public DebitCard(String cardName, double balance, String currency) {
+    public Card(String cardName, double balance, String currency) {
         super(cardName, balance, currency);
     }
 
     @Override
-    public double getCardBalance(String cardName) {
+    public void addToBalance(double value) {
+        Card.this.setBalance(Card.this.getBalance() + value);
+    }
+
+    @Override
+    public double getBankProductBalance() {
         return getBalance();
     }
 
     @Override
     public void writeOff(double value) {
-        DebitCard.this.setBalance(DebitCard.this.getBalance() - value);
-    }
-
-    @Override
-    public void addToBalance(double value) {
-        DebitCard.this.setBalance(DebitCard.this.getBalance() + value);
+        Card.this.setBalance(Card.this.getBalance() - value);
     }
 }

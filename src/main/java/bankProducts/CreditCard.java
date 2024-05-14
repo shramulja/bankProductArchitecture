@@ -1,25 +1,30 @@
-package org.example.data;
+package bankProducts;
 
-public class CreditCard extends CreditCardBakProduct implements CardMethods{
+import interfaces.IDebtRequest;
 
-    @Override
-    void debtInquiries() {
-        //запрос задолженности
+public class CreditCard extends Card implements IDebtRequest {
+
+    private double interestRate;
+
+    public CreditCard(String cardName, String currency, double balance, double interestRate) {
+        super(cardName, balance, currency);
+        this.interestRate = interestRate;
+    }
+
+    public CreditCard(String cardName, double balance, String currency) {
+        super(cardName, balance, currency);
     }
 
     @Override
-    public void requestBalance() {
-        //запрос баланса
+    public double debtRequest() {
+        return 100;
     }
 
-
-    @Override
-    public void writeOffs() {
-        //списание средств
+    public double getInterestRate() {
+        return interestRate;
     }
 
-    @Override
-    public void replenishBalance() {
-        //пополнение баланса
+    public void setInterestRate(double interestRate) {
+        this.interestRate = interestRate;
     }
 }

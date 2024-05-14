@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface ICloseDeposit {
-    //закрытие вклада
-    public void closeDeposit();
+public interface IGetBalance {
+    //запрос баланса
+    double getBankProductBalance();
 }

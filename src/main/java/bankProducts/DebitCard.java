@@ -1,18 +1,9 @@
-package org.example.data;
+package bankProducts;
 
-public class DebitCard extends BankProduct implements CardMethods {
-    @Override
-    public void writeOffs() {
-        //списание средств
+public class DebitCard extends Card {
+
+    public DebitCard(String cardName, double balance, String currency) {
+        super(cardName, balance, currency);
     }
 
-    @Override
-    public void replenishBalance() {
-
-    }
-
-    @Override
-    public void requestBalance() {
-
-    }
 }

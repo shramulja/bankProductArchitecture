@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface DepositMethods {
-    //списание средств
+public interface ICloseDeposit {
+    //закрытие вклада
     public void closeDeposit();
 }

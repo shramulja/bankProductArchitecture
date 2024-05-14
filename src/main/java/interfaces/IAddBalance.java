@@ -1,6 +1,6 @@
 package interfaces;
 
-public interface IGetBalance {
-    //запрос баланса
-    void getBalance(String cardName);
+public interface IAddBalance {
+    //пополнение
+    void addToBalance(double value);
 }
